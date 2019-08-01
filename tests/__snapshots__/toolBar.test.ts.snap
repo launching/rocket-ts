@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ToolBar.vue rend button 1`] = `
+<div class="r-toolbar">
+  <el-button-stub type="primary" icon="" nativetype="button">立即创建</el-button-stub>
+  <el-button-stub type="default" icon="" nativetype="button">新增域名</el-button-stub>
+  <el-button-stub type="default" icon="" nativetype="button">取消</el-button-stub>
+</div>
+`;

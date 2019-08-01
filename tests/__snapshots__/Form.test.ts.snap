@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RForm.vue render form 1`] = `
+<div class="r-form">
+  <el-form-stub model="[object Object]" rules="[object Object]" labelsuffix="" showmessage="true">
+    <el-form-item-stub label="密码" prop="pass" inlinemessage="" showmessage="true">
+      <r-password-stub name="pass" label="密码" widget="password"></r-password-stub>
+    </el-form-item-stub>
+    <el-form-item-stub label="确认密码" prop="checkPass" inlinemessage="" showmessage="true">
+      <r-password-stub name="checkPass" label="确认密码" widget="password"></r-password-stub>
+    </el-form-item-stub>
+    <el-form-item-stub label="年龄" prop="age" inlinemessage="" showmessage="true">
+      <r-number-stub name="age" label="年龄" widget="number"></r-number-stub>
+    </el-form-item-stub>
+    <el-form-item-stub inlinemessage="" showmessage="true">
+      <r-toolbar-stub ctx="[object Object]" children=""></r-toolbar-stub>
+    </el-form-item-stub>
+  </el-form-stub>
+</div>
+`;

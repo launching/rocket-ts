@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RInput.vue render form 1`] = `
+<div class="r-input">
+  <el-input-stub type="string" autocomplete="off" validateevent="true"></el-input-stub>
+  <r-toolbar-stub ctx="[object Object]" children=""></r-toolbar-stub>
+</div>
+`;

@@ -1,8 +1,8 @@
 <template lang="pug">
 .r-form(:style="style")
-  el-form(:model="model" :label-width="labelWidth" :inline="inline" :label-position="labelPosition" ref="form" :rules="rules" :validateOnRuleChange="validateOnRuleChange" :status-icon="statusIcon" :size="size") 
+  el-form(ref="form" v-bind="formProps") 
     el-form-item(v-for="(child, $index) in children" :key="$index" :label="child.label" :prop="propName(child)" :required="child.required" :size="child.size")
-      component(:is="itemType(child)"  v-bind="child")
+      component(:is="itemType(child)"  v-bind="child" ref="widgets" @ready="widgetReady")
     el-form-item(:size="handlerSize")
       r-toolbar(:children="toolbar" @handler-click="toolbarHandler" :ctx="model")
 </template>
@@ -67,17 +67,18 @@ export default class Form extends Vue {
     },
   })
   readonly defaultModel?: any;
-
+  defaultModelCache?: any = {};
   async defaultModelHandler() {
     return _.isFunction(this.defaultModel)
       ? this.defaultModel()
       : this.defaultModel;
   }
-  @Watch('defaultModel', { immediate: true, deep: true })
-  async refreshDefaultModel(val: any) {
+
+  async refreshDefaultModel() {
     const res = await this.defaultModelHandler();
     Object.keys(res).forEach(key => {
       this.$set(this.model, key, res[key]);
+      this.defaultModelCache[key] = _.cloneDeep(res[key]);
     });
   }
 
@@ -108,6 +109,16 @@ export default class Form extends Vue {
 
   get validateOnRuleChange(): boolean {
     return Object.keys(this.widget).some((key: string) => !this.widget[key]);
+  }
+
+  get formProps() {
+    const { widgetList, toolbar, handlerSize, ...props } = this.$props;
+    return {
+      ...props,
+      model: this.model,
+      rules: this.rules,
+      validateOnRuleChange: this.validateOnRuleChange,
+    };
   }
 
   @Provide()
@@ -157,27 +168,21 @@ export default class Form extends Vue {
     ref.validateField(name, callback);
   }
   async submit() {
-    try {
-      const valid = await this.validate();
-    } catch (e) {}
+    const valid = await this.validate();
   }
 
-  cancel() {
+  async cancel() {
     const form: any = this.$refs.form;
     const widgets: any = this.$refs.widgets;
-    if (Array.isArray(widgets)) {
-      widgets.forEach(item => item.resetFields());
-    } else {
-      widgets.resetFields();
-    }
-    form.resetFields();
+    form.clearValidate();
+    _.forEach(this.defaultModelCache, (value, key) => {
+      this.changeModelItem(key, value);
+    });
   }
 
   widget: { [name: string]: any } = {};
-  widgetReady(name: string) {
-    this.widget[name] = {
-      ...this.widget[name],
-    };
+  widgetReady(name: string, defaultValue: any) {
+    this.defaultModelCache[name] = _.cloneDeep(this.model[name]);
   }
 
   async toolbarHandler(child: ButtonItem) {
@@ -192,6 +197,7 @@ export default class Form extends Vue {
   }
 
   created() {
+    this.refreshDefaultModel();
     this.children.forEach(item => {
       this.$set(this.model, item.name, null);
     });

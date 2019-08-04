@@ -16,7 +16,7 @@ export default class WSelect extends Mixins(BaseWidget) {
 
   resetFields() {
     const select = this.$refs.select as RSelect;
-    select.setValue(this.defaultValue || '');
+    select.setValue(this.defaultValue);
   }
 }
 </script>

@@ -16,9 +16,7 @@ import RToolbar from '../toolBar/index.vue';
 export default class WInput extends Mixins(BaseWidget) {
   type: string = 'string';
 
-  toolbarHandler(child: ButtonItem) {
-    console.dir(child.text);
-  }
+  toolbarHandler(child: ButtonItem) {}
 }
 </script>
 <style lang="stylus" scoped>

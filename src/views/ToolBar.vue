@@ -26,7 +26,6 @@ export default {
             });
           },
           action: child => {
-            console.dir(child);
           },
         },
         {

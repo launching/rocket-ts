@@ -46,12 +46,16 @@ export default class Widget extends Vue {
     value: '',
   };
 
-  resetFields() {
-    this.store.value = this.defaultValue || '';
-  }
+  // resetFields() {
+  //   this.$set(this.store, 'value', this.defaultValue);
+  // }
 
   created() {
     this.initModelItemValidate(this.name, this.validate);
     this.$emit('ready', this.name);
+  }
+
+  mounted() {
+    return { name: this.name };
   }
 }

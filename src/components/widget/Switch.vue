@@ -10,10 +10,6 @@ export default class WSwitch extends Mixins(BaseWidget) {
   store: { value: string | boolean | null } = {
     value: this.defaultValue || false,
   };
-
-  resetFields() {
-    this.store.value = this.defaultValue || false;
-  }
 }
 </script>
 <style lang="stylus" scoped></style>

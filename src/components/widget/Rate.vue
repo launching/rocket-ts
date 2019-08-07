@@ -1,5 +1,5 @@
 <template lang="pug">
-.r-w-rate 
+.r-w-rate
   el-rate(v-model="store.value" :colors="colors" :max="max")
 </template>
 <script lang="ts">

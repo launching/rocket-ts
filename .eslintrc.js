@@ -9,6 +9,7 @@ module.exports = {
 
   env: {
     node: true,
+    'jest/globals': true,
   },
 
   rules: {
@@ -18,4 +19,5 @@ module.exports = {
     'max-len': 'off',
     'object-curly-newline': 'off',
   },
+  plugins: ['jest'],
 };

@@ -2,7 +2,7 @@
 .r-table
   r-form(v-if="filter" v-bind="filter" ref="filter" @searchClick="search" @cancelClick="search")
   el-table(:data="targetData" :border="border" :fit="fit" :hightlight-current-row="hightlightCurrentRow" v-loading="loading")
-    r-table-column(v-for="(column, $index) in columns" :key="$index" 
+    r-table-column(v-for="(column, $index) in columns" :key="$index"
     :label="column.label" :align="column.align" :width="column.width" :name="column.name" :type="column.type" :children="column.children")
   .pagination-container(v-if="localPage")
     el-pagination(layout="total, sizes, prev, pager, next, jumper" :page-sizes="[10, 20, 30, 40]" :page-size.sync="pagination.pageSize"  background :total.sync="total" :current-page.sync="pagination.page"  )
@@ -73,5 +73,3 @@ export default class BaseTable extends Vue {
   }
 }
 </script>
-
-

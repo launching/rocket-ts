@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import RVForm from './views/Form.vue';
 import RVLocalTable from './views/LocalTable.vue';
 import RVService from './views/ServiceTable.vue';
+
 Vue.use(Router);
 
 export default new Router({

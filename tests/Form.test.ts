@@ -1,13 +1,13 @@
 import Vue from 'vue';
 import ElementUI from 'element-ui';
-Vue.use(ElementUI);
-
-import RForm from '../src/components/Form/Form.vue';
 
 import { shallowMount, mount } from '@vue/test-utils';
+import RForm from '../src/components/Form/Form.vue';
+
+Vue.use(ElementUI);
 
 describe('RForm.vue', () => {
-  let children = [
+  const children = [
     {
       label: '密码',
       widget: 'password',

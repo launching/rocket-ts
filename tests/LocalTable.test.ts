@@ -1,10 +1,10 @@
 import Vue from 'vue';
 import ElementUI from 'element-ui';
-Vue.use(ElementUI);
-
-import LocalTable from '@/components/Table/LocalTable.vue';
 
 import { shallowMount, mount } from '@vue/test-utils';
+import LocalTable from '@/components/Table/LocalTable.vue';
+
+Vue.use(ElementUI);
 
 describe('LocalTable.vue', () => {
   const columns = [
@@ -112,7 +112,7 @@ describe('LocalTable.vue', () => {
     // expect(wrapper.html()).toMatchSnapshot();
   });
 
-  it('data is function', callback => {
+  it('data is function', (callback) => {
     const wrapper = shallowMount(LocalTable, {
       propsData: {
         columns,
@@ -147,7 +147,7 @@ describe('LocalTable.vue', () => {
 
     setTimeout(() => {
       // expect(wrapper.html()).toMatchSnapshot();
-      let vm: any = wrapper.vm;
+      const { vm } = wrapper;
       expect(vm.targetData.length).toBe(2);
       callback();
     }, 200);

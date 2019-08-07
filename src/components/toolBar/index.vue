@@ -1,7 +1,7 @@
 <template lang="pug">
 .r-toolbar
-  el-button(v-for="child in children" :key="child.text" v-if="premiseStatus[child.text]" 
-  :type="child.type" :size="child.size" :icon="child.icon" 
+  el-button(v-for="child in children" :key="child.text" v-if="premiseStatus[child.text]"
+  :type="child.type" :size="child.size" :icon="child.icon"
   @click="handlerClick(child)") {{child.text}}
 </template>
 <script lang="ts">
@@ -40,8 +40,8 @@ export default class Toolbar extends Vue {
 
   @Watch('children', { immediate: true, deep: true })
   refreshPremise() {
-    this.children.forEach(async child => {
-      let status = await this.premiseHandler(child);
+    this.children.forEach(async (child) => {
+      const status = await this.premiseHandler(child);
       this.$set(this.premiseStatus, child.text, status);
     });
   }

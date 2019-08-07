@@ -2,7 +2,7 @@
 
 exports[`RForm.vue render form 1`] = `
 <div class="r-form">
-  <el-form-stub model="[object Object]" rules="[object Object]" labelsuffix="" showmessage="true">
+  <el-form-stub model="[object Object]" rules="[object Object]" labelsuffix="" showmessage="true" children="[object Object],[object Object],[object Object]" defaultmodel="[object Object]">
     <el-form-item-stub label="密码" prop="pass" inlinemessage="" showmessage="true">
       <r-password-stub name="pass" label="密码" widget="password"></r-password-stub>
     </el-form-item-stub>

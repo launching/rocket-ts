@@ -10,11 +10,11 @@ import {
   Emit,
   Mixins,
 } from 'vue-property-decorator';
+import _ from 'lodash';
 import { Column, FormModel } from '@/components/Interface';
 import BaseTable from './BaseTable.vue';
 import RForm from '@/components/Form/Form.vue';
 import RTableColumn from '@/components/Table/TableColumn.vue';
-import _ from 'lodash';
 @Component({
   components: {
     RForm,

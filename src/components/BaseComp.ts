@@ -1,6 +1,6 @@
 import { Component, Prop, Vue, PropSync, Inject, Watch, Model } from 'vue-property-decorator';
-import { FormModel, FormItem, Validate, WidgetStore, ButtonItem } from '@/components/Interface';
 import _ from 'lodash';
+import { FormModel, FormItem, Validate, WidgetStore, ButtonItem } from '@/components/Interface';
 @Component({})
 export default class Comp extends Vue {
   @Prop()
@@ -21,7 +21,8 @@ export default class Comp extends Vue {
   refreshValue(val: any) {
     this.$set(this.store, 'value', val);
   }
-  //所有的信息都转异步
+
+  // 所有的信息都转异步
   async optionsHandler() {
     return _.isFunction(this.options) ? this.options() : this.options;
   }

@@ -1,6 +1,6 @@
 import { Component, Prop, Vue, PropSync, Inject, Watch } from 'vue-property-decorator';
-import { FormModel, FormItem, Validate, WidgetStore, ButtonItem } from '@/components/Interface';
 import _ from 'lodash';
+import { FormModel, FormItem, Validate, WidgetStore, ButtonItem } from '@/components/Interface';
 @Component({})
 export default class Widget extends Vue {
   @Prop()
@@ -32,7 +32,7 @@ export default class Widget extends Vue {
     this.$set(this.store, 'value', val);
   }
 
-  @Watch(`model`, { deep: true })
+  @Watch('model', { deep: true })
   refreshModel(val: any) {
     if (val[this.name] !== undefined) this.$set(this.store, 'value', val[this.name]);
   }

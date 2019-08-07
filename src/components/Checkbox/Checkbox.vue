@@ -14,8 +14,8 @@ import {
   Emit,
   Mixins,
 } from 'vue-property-decorator';
-import { FormModel, FormItem } from '@/components/Interface';
 import _ from 'lodash';
+import { FormModel, FormItem } from '@/components/Interface';
 import BaseComp from '../BaseComp';
 
 @Component({})
@@ -24,4 +24,3 @@ export default class RRCheckbox extends Mixins(BaseComp) {
   name!: string;
 }
 </script>
-

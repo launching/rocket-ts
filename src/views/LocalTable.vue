@@ -4,6 +4,7 @@ r-local-table(:filter="filter" :columns="columns" :data="data" border fit hightl
 <script>
 import RLocalTable from '@/components/Table/LocalTable.vue';
 import * as api from '@/api/articles';
+
 export default {
   components: {
     RLocalTable,
@@ -105,9 +106,7 @@ export default {
         },
       ],
       data() {
-        return api.getArticles().then(res => {
-          return res.data.items;
-        });
+        return api.getArticles().then(res => res.data.items);
       },
     };
   },

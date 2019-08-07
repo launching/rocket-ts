@@ -1,4 +1,5 @@
 import add from '../src/utils/add';
+
 describe('add 1 + 1', () => {
   it('test', () => {
     const sum = add(1, 1);

@@ -4,10 +4,11 @@
   r-form(v-bind="elForm")
 </template>
 <script>
+import Vue from 'vue';
 import RServiceTable from '@/components/Table/ServiceTable.vue';
 import RForm from '@/components/Form/Form.vue';
-import Vue from 'vue';
 import * as api from '@/api/articles';
+
 export default {
   components: {
     RServiceTable,
@@ -85,7 +86,7 @@ export default {
               type: 'primary',
               text: '编辑',
               size: 'mini',
-              action: child => {
+              action: (child) => {
                 this.elForm.defaultModel = child;
               },
             },

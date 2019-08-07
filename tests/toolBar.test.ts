@@ -1,10 +1,10 @@
 import Vue from 'vue';
 import ElementUI from 'element-ui';
-Vue.use(ElementUI);
-
-import RToolBar from '@/components/toolBar/index.vue';
 
 import { shallowMount, mount } from '@vue/test-utils';
+import RToolBar from '@/components/toolBar/index.vue';
+
+Vue.use(ElementUI);
 
 describe('ToolBar.vue', () => {
   const toolbar = [
@@ -111,7 +111,7 @@ describe('ToolBar.vue', () => {
     expect(buttons.length).toBe(1);
   });
 
-  it('premise is promise hidden button is hidden', callback => {
+  it('premise is promise hidden button is hidden', (callback) => {
     const toolbar = [
       {
         text: '新增域名',
@@ -141,13 +141,13 @@ describe('ToolBar.vue', () => {
     }, 100);
   });
 
-  it('premise is Promise true after 1000s', callback => {
+  it('premise is Promise true after 1000s', (callback) => {
     const toolbar = [
       {
         text: '新增域名',
         action: 'SUBMIT',
         premise() {
-          return new Promise(resolve => {
+          return new Promise((resolve) => {
             setTimeout(() => resolve(true), 1000);
           });
         },

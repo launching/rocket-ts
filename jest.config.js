@@ -16,5 +16,5 @@ module.exports = {
     // 配置快照测试
     '<rootDir>/node_modules/jest-serializer-vue',
   ],
-  transformIgnorePatterns: ['/node_modules/'],
+  transformIgnorePatterns: ['node_modules'],
 };

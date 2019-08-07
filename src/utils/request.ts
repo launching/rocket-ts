@@ -10,21 +10,20 @@ const service = axios.create({
 
 // Request interceptors
 service.interceptors.request.use(
-  config => {
+  config =>
     // Add X-Access-Token header to every request, you can add other custom headers here
     // if (UserModule.token) {
     // config.headers['X-Access-Token'] = UserModule.token;
     // }
-    return config;
-  },
-  error => {
+    config,
+  (error) => {
     Promise.reject(error);
-  }
+  },
 );
 
 // Response interceptors
 service.interceptors.response.use(
-  response => {
+  (response) => {
     // Some example codes here:
     // code == 20000: success
     // code == 50001: invalid access token
@@ -51,18 +50,17 @@ service.interceptors.response.use(
         });
       }
       return Promise.reject(new Error(res.message || 'Error'));
-    } else {
-      return response.data;
     }
+    return response.data;
   },
-  error => {
+  (error) => {
     Message({
       message: error.message,
       type: 'error',
       duration: 5 * 1000,
     });
     return Promise.reject(error);
-  }
+  },
 );
 
 export default service;

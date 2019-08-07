@@ -1,10 +1,10 @@
 import Vue from 'vue';
 import ElementUI from 'element-ui';
-Vue.use(ElementUI);
-
-import RInput from '@/components/widget/Input.vue';
 
 import { shallowMount, mount } from '@vue/test-utils';
+import RInput from '@/components/widget/Input.vue';
+
+Vue.use(ElementUI);
 
 describe('RInput.vue', () => {
   it('render form', async () => {

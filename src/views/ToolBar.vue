@@ -3,6 +3,7 @@ r-tool-bar(:children="toolbar")
 </template>
 <script>
 import RToolBar from '../components/toolBar/index.vue';
+
 export default {
   components: {
     RToolBar,
@@ -21,11 +22,11 @@ export default {
         {
           text: '新增域名',
           premise() {
-            return new Promise(resolve => {
+            return new Promise((resolve) => {
               setTimeout(() => resolve(true), 1000);
             });
           },
-          action: child => {
+          action: (child) => {
           },
         },
         {
@@ -40,4 +41,3 @@ export default {
   },
 };
 </script>
-

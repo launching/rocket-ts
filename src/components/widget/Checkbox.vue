@@ -15,6 +15,7 @@ export default class WCheckbox extends Mixins(BaseWidget) {
   store: any = {
     value: this.defaultValue || [],
   };
+
   resetFields() {
     const checkbox = this.$refs.checkbox as RCheckbox;
     checkbox.setValue(this.defaultValue || []);

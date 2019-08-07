@@ -44,3 +44,6 @@ https://trello.com/b/WToInxNw/rocket
 2. 本地分页 table
 3. 服务端分页 table
 4. toolbar
+
+
+    // "pre-commit": "lint-staged"

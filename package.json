@@ -7,7 +7,7 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "mock": "cd mock && ts-node-dev mock-server.ts",
-    "test": "jest --watchAll --coverage"
+    "test": "jest --watchAll"
   },
   "dependencies": {
     "axios": "^0.19.0",

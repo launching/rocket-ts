@@ -1,6 +1,6 @@
 module.exports = {
   preset: 'ts-jest',
-  testEnvironment: 'node',
+  testEnvironment: 'jsdom',
   moduleFileExtensions: ['js', 'json', 'ts', 'vue'],
   transform: {
     // 用 `vue-jest` 处理 `*.vue` 文件

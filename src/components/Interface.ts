@@ -12,9 +12,11 @@ export interface FormItem {
 }
 
 export interface ButtonItem {
-  text: string| undefined;
-  type: string |undefined;
-  action: string | Function| undefined;
+  text: string | undefined;
+  icon: string | undefined;
+  size: string | undefined;
+  type: string | undefined;
+  action: string | Function | undefined;
   premise: string | boolean | Function | undefined;
 }
 

@@ -3,11 +3,12 @@ import ElementUI from 'element-ui';
 
 import { shallowMount, mount } from '@vue/test-utils';
 import RToolBar from '@/components/toolBar/index.vue';
+import { ButtonItem } from '@/components/Interface';
 
 Vue.use(ElementUI);
 
 describe('ToolBar.vue', () => {
-  const toolbar = [
+  const globalToolbar = [
     {
       type: 'primary',
       text: '立即创建',
@@ -26,7 +27,7 @@ describe('ToolBar.vue', () => {
   it('rend button', async () => {
     const wrapper = shallowMount(RToolBar, {
       propsData: {
-        children: toolbar,
+        children: globalToolbar,
       },
     });
     await wrapper.vm.$nextTick();
@@ -36,10 +37,10 @@ describe('ToolBar.vue', () => {
 
   it('click button targget click', async () => {
     const action = jest.fn();
-    toolbar[0].action = action;
+    globalToolbar[0].action = action;
     const wrapper = mount(RToolBar, {
       propsData: {
-        children: toolbar,
+        children: globalToolbar,
       },
     });
 
@@ -53,7 +54,7 @@ describe('ToolBar.vue', () => {
   it('premise is undefined button is show', async () => {
     const wrapper = mount(RToolBar, {
       propsData: {
-        children: toolbar,
+        children: globalToolbar,
       },
     });
     await wrapper.vm.$nextTick();
@@ -66,9 +67,7 @@ describe('ToolBar.vue', () => {
       {
         text: '新增域名',
         action: 'SUBMIT',
-        premise() {
-          return true;
-        },
+        premise: () => true,
       },
     ];
     const wrapper = mount(RToolBar, {

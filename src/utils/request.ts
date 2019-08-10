@@ -9,13 +9,12 @@ const service = axios.create({
 });
 
 // Request interceptors
+// Add X-Access-Token header to every request, you can add other custom headers here
+// if (UserModule.token) {
+// config.headers['X-Access-Token'] = UserModule.token;
+// }
 service.interceptors.request.use(
-  config =>
-    // Add X-Access-Token header to every request, you can add other custom headers here
-    // if (UserModule.token) {
-    // config.headers['X-Access-Token'] = UserModule.token;
-    // }
-    config,
+  config => config,
   (error) => {
     Promise.reject(error);
   },
@@ -46,7 +45,7 @@ service.interceptors.response.use(
           type: 'warning',
         }).then(() => {
           // UserModule.ResetToken();
-          location.reload(); // To prevent bugs from vue-router
+          window.location.reload(); // To prevent bugs from vue-router
         });
       }
       return Promise.reject(new Error(res.message || 'Error'));

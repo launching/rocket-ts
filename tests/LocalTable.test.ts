@@ -2,7 +2,7 @@ import Vue from 'vue';
 import ElementUI from 'element-ui';
 
 import { shallowMount, mount } from '@vue/test-utils';
-import LocalTable from '@/components/Table/LocalTable.vue';
+import RLocalTable from '@/components/Table/LocalTable.vue';
 
 Vue.use(ElementUI);
 
@@ -97,7 +97,7 @@ describe('LocalTable.vue', () => {
   const border = true;
 
   it('localTable Snapshot', async () => {
-    const wrapper = shallowMount(LocalTable, {
+    const wrapper = shallowMount(RLocalTable, {
       propsData: {
         columns,
         filter,
@@ -109,36 +109,34 @@ describe('LocalTable.vue', () => {
     });
 
     await wrapper.vm.$nextTick();
-    // expect(wrapper.html()).toMatchSnapshot();
+    expect(wrapper.html()).toMatchSnapshot();
   });
 
   it('data is function', (callback) => {
-    const wrapper = shallowMount(LocalTable, {
+    const wrapper = shallowMount(RLocalTable, {
       propsData: {
         columns,
         filter,
-        data() {
-          return [
-            {
-              id: '1',
-              timestamp: '212',
-              title: '123',
-              author: '12312',
-              importance: '1232',
-              pageviews: '124',
-              status: '123',
-            },
-            {
-              id: '2',
-              timestamp: '212',
-              title: '123',
-              author: '12312',
-              importance: '1232',
-              pageviews: '124',
-              status: '123',
-            },
-          ];
-        },
+        data: () => [
+          {
+            id: '1',
+            timestamp: '212',
+            title: '123',
+            author: '12312',
+            importance: '1232',
+            pageviews: '124',
+            status: '123',
+          },
+          {
+            id: '2',
+            timestamp: '212',
+            title: '123',
+            author: '12312',
+            importance: '1232',
+            pageviews: '124',
+            status: '123',
+          },
+        ],
         border,
         fit,
         hightlightCurrentRow,
@@ -146,10 +144,13 @@ describe('LocalTable.vue', () => {
     });
 
     setTimeout(() => {
-      // expect(wrapper.html()).toMatchSnapshot();
-      const { vm } = wrapper;
-      expect(vm.targetData.length).toBe(2);
+      expect(wrapper.html()).toMatchSnapshot();
+      expect(wrapper.find('el-table-stub').attributes('data')).toBe(
+        '[object Object],[object Object]',
+      );
+      const vm: RLocalTable = wrapper.vm as RLocalTable;
+      // expect((wrapper.attributes('targetData') as Array<any>).length).toBe(2);
       callback();
-    }, 200);
+    }, 1000);
   });
 });

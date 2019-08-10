@@ -6,16 +6,7 @@ el-table-column(:label="label" :align="align" :width="width")
     span(v-else) {{ scope.row[name] }}
 </template>
 <script lang="ts">
-import {
-  Component,
-  Prop,
-  Vue,
-  PropSync,
-  Inject,
-  Watch,
-  Model,
-  Emit,
-} from 'vue-property-decorator';
+import { Component, Prop, Vue, PropSync, Inject, Watch, Model, Emit } from 'vue-property-decorator';
 import { Column, ButtonItem } from '@/components/Interface';
 
 import RToolbar from '@/components/toolBar/index.vue';

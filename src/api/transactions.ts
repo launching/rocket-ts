@@ -5,3 +5,5 @@ export const getTransactions = (params: any) => request({
   method: 'get',
   params,
 });
+
+export default {};

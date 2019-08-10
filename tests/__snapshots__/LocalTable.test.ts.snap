@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LocalTable.vue data is function 1`] = `
+<div class="r-table">
+  <r-form-stub children="[object Object],[object Object],[object Object]" defaultmodel="[object Object]" toolbar="[object Object],[object Object],[object Object]" inline="true"></r-form-stub>
+  <el-table-stub data="[object Object],[object Object]" fit="true" border="true" showheader="true" selectonindeterminate="true" indent="16" treeprops="[object Object]" hightlight-current-row="true" class="">
+    <r-table-column-stub label="序号" width="80" name="id"></r-table-column-stub>
+    <r-table-column-stub label="时间" width="180" name="timestamp"></r-table-column-stub>
+    <r-table-column-stub label="标题" width="150" name="title"></r-table-column-stub>
+    <r-table-column-stub label="作者" width="180" name="author"></r-table-column-stub>
+    <r-table-column-stub label="重要性" width="110" name="importance"></r-table-column-stub>
+    <r-table-column-stub label="阅读数" width="95" name="pageviews"></r-table-column-stub>
+    <r-table-column-stub label="状态" width="100" name="status" type="tag"></r-table-column-stub>
+    <r-table-column-stub label="操作" width="230" type="toolbar" children="[object Object],[object Object],[object Object],[object Object]"></r-table-column-stub>
+    <div class="el-loading-mask" style="display: none;">
+      <div class="el-loading-spinner"><svg viewBox="25 25 50 50" class="circular">
+          <circle cx="50" cy="50" r="20" fill="none" class="path"></circle>
+        </svg>
+        <!---->
+      </div>
+    </div>
+  </el-table-stub>
+  <div class="pagination-container">
+    <el-pagination-stub pagesize="10" total="2" pagercount="7" currentpage="1" layout="total, sizes, prev, pager, next, jumper" pagesizes="10,20,30,40" background="true"></el-pagination-stub>
+  </div>
+</div>
+`;
+
+exports[`LocalTable.vue localTable Snapshot 1`] = `
+<div class="r-table">
+  <r-form-stub children="[object Object],[object Object],[object Object]" defaultmodel="[object Object]" toolbar="[object Object],[object Object],[object Object]" inline="true"></r-form-stub>
+  <el-table-stub data="" fit="true" border="true" showheader="true" selectonindeterminate="true" indent="16" treeprops="[object Object]" hightlight-current-row="true" class="el-loading-parent--relative">
+    <r-table-column-stub label="序号" width="80" name="id"></r-table-column-stub>
+    <r-table-column-stub label="时间" width="180" name="timestamp"></r-table-column-stub>
+    <r-table-column-stub label="标题" width="150" name="title"></r-table-column-stub>
+    <r-table-column-stub label="作者" width="180" name="author"></r-table-column-stub>
+    <r-table-column-stub label="重要性" width="110" name="importance"></r-table-column-stub>
+    <r-table-column-stub label="阅读数" width="95" name="pageviews"></r-table-column-stub>
+    <r-table-column-stub label="状态" width="100" name="status" type="tag"></r-table-column-stub>
+    <r-table-column-stub label="操作" width="230" type="toolbar" children="[object Object],[object Object],[object Object],[object Object]"></r-table-column-stub>
+    <div class="el-loading-mask el-loading-fade-leave el-loading-fade-leave-active" style="">
+      <div class="el-loading-spinner"><svg viewBox="25 25 50 50" class="circular">
+          <circle cx="50" cy="50" r="20" fill="none" class="path"></circle>
+        </svg>
+        <!---->
+      </div>
+    </div>
+  </el-table-stub>
+  <div class="pagination-container">
+    <el-pagination-stub pagesize="10" total="0" pagercount="7" currentpage="1" layout="total, sizes, prev, pager, next, jumper" pagesizes="10,20,30,40" background="true"></el-pagination-stub>
+  </div>
+</div>
+`;

@@ -61,6 +61,7 @@
     "eslint": "^6.1.0",
     "eslint-plugin-jest": "^22.14.1",
     "eslint-plugin-vue": "^5.0.0",
+    "eslint-plugin-vuefix": "^0.2.1",
     "express": "^4.17.1",
     "faker": "^4.1.0",
     "jest": "^24.8.0",
@@ -88,7 +89,9 @@
     "> 1%",
     "last 2 versions"
   ],
-  "gitHooks": {},
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
   "lint-staged": {
     "*.{js,vue}": [
       "vue-cli-service lint",

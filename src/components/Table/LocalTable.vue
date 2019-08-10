@@ -1,20 +1,15 @@
 <script lang="ts">
-import {
-  Component,
-  Prop,
-  Vue,
-  PropSync,
-  Inject,
-  Watch,
-  Model,
-  Emit,
-  Mixins,
-} from 'vue-property-decorator';
+import { Component, Prop, Vue, PropSync, Inject, Watch, Model, Emit, Mixins } from 'vue-property-decorator';
 import _ from 'lodash';
 import { Column, FormModel } from '@/components/Interface';
 import BaseTable from './BaseTable.vue';
 import RForm from '@/components/Form/Form.vue';
 import RTableColumn from '@/components/Table/TableColumn.vue';
+
+export interface RLocalTableComponent extends Vue {
+  targetData: Array<any>;
+}
+
 @Component({
   components: {
     RForm,
@@ -46,7 +41,7 @@ export default class RLocalTable extends Mixins(BaseTable) {
   }
 
   get totalTable() {
-    return this.originData.filter((item) => {
+    return this.originData.filter(item => {
       let temp = true;
       for (const key in this.filterData) {
         if (!this.filterData[key] && this.filterData[key] !== false) {

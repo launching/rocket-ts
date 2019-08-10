@@ -40,7 +40,7 @@ export default class Toolbar extends Vue {
 
   @Watch('children', { immediate: true, deep: true })
   refreshPremise() {
-    this.children.forEach(async (child) => {
+    this.children.forEach(async child => {
       const status = await this.premiseHandler(child);
       this.$set(this.premiseStatus, child.text, status);
     });

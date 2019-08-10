@@ -12,7 +12,7 @@ export const parseTime = (
     date = time as Date;
   } else {
     if (typeof time === 'string' && /^[0-9]+$/.test(time)) {
-      time = parseInt(time);
+      time = parseInt(time, 10);
     }
     if (typeof time === 'number' && time.toString().length === 10) {
       time *= 1000;

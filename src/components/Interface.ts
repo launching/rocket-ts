@@ -12,10 +12,10 @@ export interface FormItem {
 }
 
 export interface ButtonItem {
-  text: string;
-  type: string;
-  action: string | Function;
-  premise: Function;
+  text: string| undefined;
+  type: string |undefined;
+  action: string | Function| undefined;
+  premise: string | boolean | Function | undefined;
 }
 
 export interface WidgetStore {

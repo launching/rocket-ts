@@ -8,23 +8,8 @@
     el-pagination(layout="total, sizes, prev, pager, next, jumper" :page-sizes="[10, 20, 30, 40]" :page-size.sync="pagination.pageSize"  background :total.sync="total" :current-page.sync="pagination.page"  )
 </template>
 <script lang="ts">
-import {
-  Component,
-  Prop,
-  Vue,
-  PropSync,
-  Inject,
-  Watch,
-  InjectReactive,
-} from 'vue-property-decorator';
-import {
-  FormModel,
-  FormItem,
-  Validate,
-  WidgetStore,
-  ButtonItem,
-  Column,
-} from '@/components/Interface';
+import { Component, Prop, Vue, PropSync, Inject, Watch, InjectReactive } from 'vue-property-decorator';
+import { FormModel, FormItem, Validate, WidgetStore, ButtonItem, Column } from '@/components/Interface';
 
 @Component({})
 export default class BaseTable extends Vue {

@@ -18,6 +18,7 @@ module.exports = {
     'no-unused-vars': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'max-len': 'off',
     'object-curly-newline': 'off',
+    'no-param-reassign': 0,
   },
-  plugins: ['jest'],
+  plugins: ['vuefix', 'jest'],
 };

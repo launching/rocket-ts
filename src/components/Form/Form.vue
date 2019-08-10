@@ -7,24 +7,10 @@
       r-toolbar(:children="toolbar" @handler-click="toolbarHandler" :ctx="model")
 </template>
 <script lang="ts">
-import {
-  Component,
-  Prop,
-  Vue,
-  PropSync,
-  Provide,
-  ProvideReactive,
-  Watch,
-} from 'vue-property-decorator';
+import { Component, Prop, Vue, PropSync, Provide, ProvideReactive, Watch } from 'vue-property-decorator';
 import _ from 'lodash';
-import { ElementUIComponent } from 'element-ui/types/component';
-import {
-  FormModel,
-  FormItem,
-  ButtonItem,
-  Validate,
-} from '@/components/Interface';
-// import { Form as ElForm } from 'element-ui';
+import { Form as ElForm } from 'element-ui';
+import { FormModel, FormItem, ButtonItem, Validate } from '@/components/Interface';
 import RInput from '@/components/widget/Input.vue';
 import RSelect from '@/components/widget/Select.vue';
 import RCheckbox from '@/components/widget/Checkbox.vue';
@@ -37,7 +23,6 @@ import RDatePicker from '@/components/widget/DatePicker.vue';
 import RDatePickerGroup from '@/components/widget/DatePickerGroup.vue';
 import RRate from '@/components/widget/Rate.vue';
 import RToolbar from '@/components/toolBar/index.vue';
-// import BaseWidget from '@/components/widget/BaseWidget';
 @Component({
   components: {
     RInput,
@@ -71,14 +56,12 @@ export default class Form extends Vue {
   defaultModelCache?: any = {};
 
   async defaultModelHandler() {
-    return _.isFunction(this.defaultModel)
-      ? this.defaultModel()
-      : this.defaultModel;
+    return _.isFunction(this.defaultModel) ? this.defaultModel() : this.defaultModel;
   }
 
   async refreshDefaultModel() {
     const res = await this.defaultModelHandler();
-    Object.keys(res).forEach((key) => {
+    Object.keys(res).forEach((key: string) => {
       this.$set(this.model, key, res[key]);
       this.defaultModelCache[key] = _.cloneDeep(res[key]);
     });
@@ -136,11 +119,11 @@ export default class Form extends Vue {
     this.$set(this.rules, name, value);
   }
 
-  propName(child: FormItem): string | undefined {
+  propName = (child: FormItem) => {
     const unPropWidget = ['datePickerGroup'];
-    if (~unPropWidget.indexOf(child.widget)) return undefined;
+    if (unPropWidget.indexOf(child.widget) > -1) return undefined;
     return child.name;
-  }
+  };
 
   get style() {
     return {
@@ -148,18 +131,15 @@ export default class Form extends Vue {
     };
   }
 
-  itemType(child: { widget: string }): string {
-    child.widget = child.widget || 'input';
-    const widgetName = child.widget.replace(
-      /([A-Z])/g,
-      e => `-${e.toLowerCase()}`,
-    );
+  itemType = (child: { widget: string }) => {
+    const widget = child.widget || 'input';
+    const widgetName = widget.replace(/([A-Z])/g, e => `-${e.toLowerCase()}`);
     return `r-${widgetName}`;
-  }
+  };
 
   validate() {
     return new Promise((resolve, reject) => {
-      const ref: any = this.$refs.form;
+      const ref: ElForm = this.$refs.form as ElForm;
       ref.validate((valid: boolean) => (valid ? resolve(valid) : reject(valid)));
     });
   }
@@ -174,7 +154,7 @@ export default class Form extends Vue {
   }
 
   async cancel() {
-    const { form } = this.$refs;
+    const form: ElForm = this.$refs.form as ElForm;
     const { widgets } = this.$refs;
     form.clearValidate();
     _.forEach(this.defaultModelCache, (value, key) => {
@@ -201,9 +181,7 @@ export default class Form extends Vue {
 
   created() {
     this.refreshDefaultModel();
-    this.children.forEach((item) => {
-      this.$set(this.model, item.name, null);
-    });
+    this.children.forEach(item => this.$set(this.model, item.name, null));
   }
 }
 </script>

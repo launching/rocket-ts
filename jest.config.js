@@ -1,4 +1,6 @@
 module.exports = {
+  preset: 'ts-jest',
+  testEnvironment: 'node',
   moduleFileExtensions: ['js', 'json', 'ts', 'vue'],
   transform: {
     // 用 `vue-jest` 处理 `*.vue` 文件
@@ -6,7 +8,6 @@ module.exports = {
     '.*\\.js$': '<rootDir>/node_modules/babel-jest',
     '.*\\.(vue)$': '<rootDir>/node_modules/vue-jest',
   },
-  testEnvironment: 'jsdom',
   rootDir: '',
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',

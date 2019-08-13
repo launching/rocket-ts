@@ -13,8 +13,12 @@ const service = axios.create({
 // if (UserModule.token) {
 // config.headers['X-Access-Token'] = UserModule.token;
 // }
+
 service.interceptors.request.use(
-  config => config,
+  (config) => {
+    config.headers['X-Access-Token'] = 'admin';
+    return config;
+  },
   (error) => {
     Promise.reject(error);
   },

@@ -1,21 +1,24 @@
 <template lang="pug">
 .div
+  r-dialog-form(:title="'editor'" :form="elForm" ref="form")
   r-service-table(:filter="filter" :columns="columns" :data="data" border fit hightlight-current-row :localPage="true" ref="table")
-  r-form(v-bind="elForm")
 </template>
 <script>
 import Vue from 'vue';
 import RServiceTable from '@/components/Table/ServiceTable.vue';
+import RDialogForm from '@/components/Dialog/DialogForm.vue';
 import RForm from '@/components/Form/Form.vue';
 import * as api from '@/api/articles';
 
 export default {
   components: {
     RServiceTable,
+    RDialogForm,
     RForm,
   },
   data() {
     return {
+      dialogShow: false,
       filter: {
         inline: true,
         children: [
@@ -43,12 +46,7 @@ export default {
             widget: 'select',
             name: 'type',
             clearable: true,
-            options: [
-              { value: 'CN', label: 'China' },
-              { value: 'US', label: 'USA' },
-              { value: 'JP', label: 'Japan' },
-              { value: 'EU', label: 'Eurozone' },
-            ],
+            options: [{ value: 'CN', label: 'China' }, { value: 'US', label: 'USA' }, { value: 'JP', label: 'Japan' }, { value: 'EU', label: 'Eurozone' }],
           },
         ],
         toolbar: [
@@ -62,7 +60,14 @@ export default {
             text: '取消',
             action: 'CANCEL',
           },
-          { icon: 'el-icon-edit', text: '添加', action() {} },
+          {
+            icon: 'el-icon-edit',
+            text: '添加',
+            action: () => {
+              this.elForm.defaultModel = {};
+              this.$refs.form.open();
+            },
+          },
           { icon: 'el-icon-download', text: '导出', action() {} },
         ],
       },
@@ -86,8 +91,9 @@ export default {
               type: 'primary',
               text: '编辑',
               size: 'mini',
-              action: (child) => {
+              action: child => {
                 this.elForm.defaultModel = child;
+                this.$refs.form.open();
               },
             },
             {
@@ -130,12 +136,7 @@ export default {
             name: 'type',
             widget: 'select',
             defaultValue: 'CN',
-            options: [
-              { value: 'CN', label: 'China' },
-              { value: 'US', label: 'USA' },
-              { value: 'JP', label: 'Japan' },
-              { value: 'EU', label: 'Eurozone' },
-            ],
+            options: [{ value: 'CN', label: 'China' }, { value: 'US', label: 'USA' }, { value: 'JP', label: 'Japan' }, { value: 'EU', label: 'Eurozone' }],
           },
           {
             label: '时间',
@@ -167,7 +168,23 @@ export default {
           {
             type: 'primary',
             text: '立即创建',
-            action: 'SUBMIT',
+            action: async model => {
+              model.author = 'vue-typescript-admin';
+              let res = null;
+              if (model.id) {
+                res = await api.updateArticlea(model.id, { article: model });
+              }
+              res = await api.createArticle({ article: model });
+              if (res && res.code === 20000) {
+                this.$refs.form.close();
+                this.$notify({
+                  title: '成功',
+                  message: '更新成功',
+                  type: 'success',
+                  duration: 2000,
+                });
+              }
+            },
           },
           {
             text: '取消',

@@ -1,15 +1,5 @@
 <script lang="ts">
-import {
-  Component,
-  Prop,
-  Vue,
-  PropSync,
-  Inject,
-  Watch,
-  Model,
-  Emit,
-  Mixins,
-} from 'vue-property-decorator';
+import { Component, Prop, Vue, PropSync, Inject, Watch, Model, Emit, Mixins } from 'vue-property-decorator';
 import _ from 'lodash';
 import { Column, FormModel } from '@/components/Interface';
 import BaseTable from './BaseTable.vue';

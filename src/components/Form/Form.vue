@@ -7,7 +7,7 @@
       r-toolbar(:children="toolbar" @handler-click="toolbarHandler" :ctx="model")
 </template>
 <script lang="ts">
-import { Component, Prop, Vue, PropSync, Provide, ProvideReactive, Watch } from 'vue-property-decorator';
+import { Component, Prop, Mixins, Vue, PropSync, Provide, ProvideReactive, Watch } from 'vue-property-decorator';
 import _ from 'lodash';
 import { Form as ElForm } from 'element-ui';
 import { FormModel, FormItem, ButtonItem, Validate } from '@/components/Interface';
@@ -39,7 +39,7 @@ import RToolbar from '@/components/toolBar/index.vue';
     RRate,
   },
 })
-export default class Form extends Vue {
+export default class Form extends Mixins(Vue) {
   @Prop(Array)
   readonly children!: Array<FormItem>;
 
@@ -58,7 +58,7 @@ export default class Form extends Vue {
   async defaultModelHandler() {
     return _.isFunction(this.defaultModel) ? this.defaultModel() : this.defaultModel;
   }
-
+  @Watch('defaultModel', { immediate: true, deep: true })
   async refreshDefaultModel() {
     const res = await this.defaultModelHandler();
     Object.keys(res).forEach((key: string) => {
@@ -180,7 +180,6 @@ export default class Form extends Vue {
   }
 
   created() {
-    this.refreshDefaultModel();
     this.children.forEach(item => this.$set(this.model, item.name, null));
   }
 }

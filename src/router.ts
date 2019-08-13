@@ -3,14 +3,20 @@ import Router from 'vue-router';
 import RVForm from './views/Form.vue';
 import RVLocalTable from './views/LocalTable.vue';
 import RVService from './views/ServiceTable.vue';
+import RVLogin from './views/Login.vue';
 
 Vue.use(Router);
 
 export default new Router({
   routes: [
     {
+      path: '/Login',
+      name: 'login',
+      component: RVLogin,
+    },
+    {
       path: '/',
-      name: 'from',
+      name: 'form',
       component: RVForm,
     },
     {

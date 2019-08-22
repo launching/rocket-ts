@@ -2,19 +2,70 @@
 
 exports[`RForm.vue render form 1`] = `
 <div class="r-form">
-  <el-form-stub model="[object Object]" rules="[object Object]" labelsuffix="" showmessage="true" children="[object Object],[object Object],[object Object]" defaultmodel="[object Object]">
-    <el-form-item-stub label="密码" prop="pass" inlinemessage="" showmessage="true">
-      <r-password-stub name="pass" label="密码" widget="password"></r-password-stub>
-    </el-form-item-stub>
-    <el-form-item-stub label="确认密码" prop="checkPass" inlinemessage="" showmessage="true">
-      <r-password-stub name="checkPass" label="确认密码" widget="password"></r-password-stub>
-    </el-form-item-stub>
-    <el-form-item-stub label="年龄" prop="age" inlinemessage="" showmessage="true">
-      <r-number-stub name="age" label="年龄" widget="number"></r-number-stub>
-    </el-form-item-stub>
-    <el-form-item-stub inlinemessage="" showmessage="true">
-      <r-toolbar-stub ctx="[object Object]" children=""></r-toolbar-stub>
-    </el-form-item-stub>
-  </el-form-stub>
+  <form class="el-form" children="[object Object],[object Object],[object Object],[object Object]" defaultmodel="function () {
+                                return Promise.resolve({ pass: '123',
+                                    checkPass: '1234',
+                                    age: '12',
+                                    sex: '1' });
+                            }">
+    <div class="el-form-item"><label for="pass" class="el-form-item__label">密码</label>
+      <div class="el-form-item__content">
+        <div class="r-input" label="密码" widget="password">
+          <div class="el-input">
+            <!----><input type="password" autocomplete="off" class="el-input__inner">
+            <!---->
+            <!---->
+            <!---->
+            <!---->
+          </div>
+          <div class="r-toolbar"></div>
+        </div>
+        <!---->
+      </div>
+    </div>
+    <div class="el-form-item"><label for="checkPass" class="el-form-item__label">确认密码</label>
+      <div class="el-form-item__content">
+        <div class="r-input" label="确认密码" widget="password">
+          <div class="el-input">
+            <!----><input type="password" autocomplete="off" class="el-input__inner">
+            <!---->
+            <!---->
+            <!---->
+            <!---->
+          </div>
+          <div class="r-toolbar"></div>
+        </div>
+        <!---->
+      </div>
+    </div>
+    <div class="el-form-item"><label for="age" class="el-form-item__label">年龄</label>
+      <div class="el-form-item__content">
+        <div class="r-input" label="年龄" widget="number">
+          <div class="el-input">
+            <!----><input type="password" autocomplete="off" class="el-input__inner">
+            <!---->
+            <!---->
+            <!---->
+            <!---->
+          </div>
+          <div class="r-toolbar"></div>
+        </div>
+        <!---->
+      </div>
+    </div>
+    <div class="el-form-item"><label for="sex" class="el-form-item__label">性别</label>
+      <div class="el-form-item__content">
+        <div role="radiogroup" class="el-radio-group" label="性别" widget="radio"></div>
+        <!---->
+      </div>
+    </div>
+    <div class="el-form-item">
+      <!---->
+      <div class="el-form-item__content">
+        <div class="r-toolbar"></div>
+        <!---->
+      </div>
+    </div>
+  </form>
 </div>
 `;

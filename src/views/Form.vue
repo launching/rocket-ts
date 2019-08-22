@@ -1,7 +1,7 @@
 /* eslint none */
 <template lang="pug">
   .home
-    r-radio(v-model="labelPosition" :options="options")
+    //- r-radio(v-model="labelPosition" :options="options")
     div 动态增减表单项
     //- r-form(class="self-form" :inline="true" :children="childrenSelf" :label-position="labelPosition" label-width="80px" :toolbar="toolbar" :status-icon="true" size="mini" handlerSize="large" ref="selfForm")
     div 自定义校验规则
@@ -102,15 +102,10 @@ export default {
           defaultValue: 'shanghai',
           options() {
             return new Promise(resolve => {
-              resolve([
-                { label: '区域一', value: 'shanghai' },
-                { label: '区域二', value: 'beijing' },
-              ]);
+              resolve([{ label: '区域一', value: 'shanghai' }, { label: '区域二', value: 'beijing' }]);
             });
           },
-          validate: [
-            { required: true, message: '请选择活动区域', trigger: 'change' },
-          ],
+          validate: [{ required: true, message: '请选择活动区域', trigger: 'change' }],
         },
         {
           label: '活动时间',
@@ -154,12 +149,7 @@ export default {
           defaultValue: ['地推活动'],
           options() {
             return new Promise(resolve => {
-              resolve([
-                { label: '美食/餐厅线上活动' },
-                { label: '地推活动' },
-                { label: '线下主题活动' },
-                { label: '单纯品牌曝光' },
-              ]);
+              resolve([{ label: '美食/餐厅线上活动' }, { label: '地推活动' }, { label: '线下主题活动' }, { label: '单纯品牌曝光' }]);
             });
           },
           validate: [
@@ -176,23 +166,20 @@ export default {
           widget: 'radio',
           defaultValue: '线上品牌商赞助',
           name: 'resource',
+          emum: 'system.sex',
           options() {
             return new Promise(resolve => {
               resolve([{ label: '线上品牌商赞助' }, { label: '线下场地免费' }]);
             });
           },
-          validate: [
-            { required: true, message: '请选择活动资源', trigger: 'change' },
-          ],
+          validate: [{ required: true, message: '请选择活动资源', trigger: 'change' }],
         },
         {
           label: '活动形式',
           widget: 'textarea',
           name: 'desc',
           defaultValue: '活动形式',
-          validate: [
-            { required: true, message: '请填写活动形式', trigger: 'blur' },
-          ],
+          validate: [{ required: true, message: '请填写活动形式', trigger: 'blur' }],
         },
       ],
       childrenLogin: [
@@ -220,9 +207,7 @@ export default {
         label: '域名',
         widget: 'input',
         name: Date.now().toString(),
-        validate: [
-          { required: true, message: '域名不能为空', trigger: 'blur' },
-        ],
+        validate: [{ required: true, message: '域名不能为空', trigger: 'blur' }],
         toolbar: [
           {
             text: '删除',
@@ -254,9 +239,7 @@ export default {
           label: '域名',
           widget: 'input',
           name: Date.now().toString(),
-          validate: [
-            { required: true, message: '域名不能为空', trigger: 'blur' },
-          ],
+          validate: [{ required: true, message: '域名不能为空', trigger: 'blur' }],
           toolbar: [
             {
               text: '删除',

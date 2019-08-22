@@ -11,35 +11,16 @@ import { Component, Prop, Mixins, Vue, PropSync, Provide, ProvideReactive, Watch
 import _ from 'lodash';
 import { Form as ElForm } from 'element-ui';
 import { FormModel, FormItem, ButtonItem, Validate } from '@/components/Interface';
-import RInput from '@/components/widget/Input.vue';
-import RSelect from '@/components/widget/Select.vue';
-import RCheckbox from '@/components/widget/Checkbox.vue';
-import RRadio from '@/components/widget/Radio.vue';
-import RSwitch from '@/components/widget/Switch.vue';
-import RTextarea from '@/components/widget/Textarea.vue';
-import RPassword from '@/components/widget/Password.vue';
-import RNumber from '@/components/widget/Number.vue';
-import RDatePicker from '@/components/widget/DatePicker.vue';
-import RDatePickerGroup from '@/components/widget/DatePickerGroup.vue';
-import RRate from '@/components/widget/Rate.vue';
+import widget from '@/components/widget';
 import RToolbar from '@/components/toolBar/index.vue';
+
 @Component({
   components: {
-    RInput,
-    RSelect,
-    RCheckbox,
-    RRadio,
-    RSwitch,
-    RDatePicker,
-    RDatePickerGroup,
+    ...widget,
     RToolbar,
-    RTextarea,
-    RPassword,
-    RNumber,
-    RRate,
   },
 })
-export default class Form extends Mixins(Vue) {
+export default class RForm extends Mixins(Vue) {
   @Prop(Array)
   readonly children!: Array<FormItem>;
 

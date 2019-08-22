@@ -1,6 +1,6 @@
-import { Component, Prop, Vue, PropSync, Inject, Watch } from 'vue-property-decorator';
+import { Component, Prop, Vue, Inject, Watch } from 'vue-property-decorator';
 import _ from 'lodash';
-import { FormModel, FormItem, Validate, WidgetStore, ButtonItem } from '@/components/Interface';
+import { FormModel,  Validate, WidgetStore, ButtonItem } from '@/components/Interface';
 @Component({})
 export default class Widget extends Vue {
   @Prop()

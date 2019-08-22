@@ -8,7 +8,7 @@ Vue.use(ElementUI);
 
 describe('RInput.vue', () => {
   it('render form', async () => {
-    const wrapper = shallowMount(RInput, {
+    const wrapper = mount(RInput, {
       propsData: {
         name: 'name',
       },

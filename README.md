@@ -47,3 +47,36 @@ https://trello.com/b/WToInxNw/rocket
 
 
     // "pre-commit": "lint-staged"
+
+man famile
+
+男 女
+
+sex: []
+
+```JavaScript
+{
+sex: [
+    {
+        name: man,
+        text: '男'
+    },
+    {
+        name: femail,
+        text: '女'
+    }
+    ],
+status: [
+    {
+        name: '',
+        text: ''
+    }
+]
+
+}
+```
+
+```JavaScript
+    var store = new Store(url)
+    store: get,post,patch,delete
+```

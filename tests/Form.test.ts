@@ -23,16 +23,33 @@ describe('RForm.vue', () => {
       widget: 'number',
       name: 'age',
     },
+    {
+      label: '性别',
+      widget: 'radio',
+      name: 'sex'
+    }
   ];
 
   it('render form', async () => {
-    const wrapper = shallowMount(RForm, {
+    const wrapper = mount(RForm, {
       propsData: {
         children,
+        defaultModel: () => { 
+          return Promise.resolve({pass: '123',
+          checkPass: '1234',
+          age: '12',
+          sex: '1'})
+        }
       },
     });
     await wrapper.vm.$nextTick();
 
     expect(wrapper.html()).toMatchSnapshot();
+
+    wrapper.find('input[type="password"]').setValue('123')
+    await wrapper.vm.$nextTick();
+
+    const vm:any = wrapper.vm as RForm ;
+    expect(vm.model.pass).toEqual('123');
   });
 });

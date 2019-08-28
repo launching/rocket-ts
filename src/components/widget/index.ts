@@ -21,5 +21,5 @@ export default {
   WNumber,
   WDatePicker,
   WDatePickerGroup,
-  WRate
+  WRate,
 };

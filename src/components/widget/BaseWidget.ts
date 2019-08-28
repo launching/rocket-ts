@@ -62,7 +62,7 @@ export default class Widget extends Vue {
 
   @Watch('visible', { immediate: true, deep: true })
   async refreshVisible() {
-    let res = await this.visibleHandler();
+    const res = await this.visibleHandler();
     this.initItemVisible(this.name, res);
   }
 

@@ -1,6 +1,7 @@
 /* eslint none */
 <template lang="pug">
   .home
+    
     //- r-radio(v-model="labelPosition" :options="options")
     div 动态增减表单项
     //- r-form(class="self-form" :inline="true" :children="childrenSelf" :label-position="labelPosition" label-width="80px" :toolbar="toolbar" :status-icon="true" size="mini" handlerSize="large" ref="selfForm")
@@ -14,12 +15,14 @@
 // @ is an alias to /src
 /* eslint-disable */
 import RForm from '@/components/Form/Form.vue';
+import RCompList from '@/components/CompList/CompList.vue';
 import RRadio from '@/components/Radio/index.vue';
 import { ButtonItem } from '@/components/Interface';
 export default {
   components: {
     RForm,
     RRadio,
+    RCompList,
   },
   data() {
     var checkAge = (rule, value, callback) => {
@@ -85,6 +88,7 @@ export default {
           widget: 'input',
           name: 'name',
           defaultValue: '张瀚',
+          disabled: true,
           validate: [
             { required: true, message: '请输入活动名称', trigger: 'blur' },
             {
@@ -99,6 +103,7 @@ export default {
           label: '活动区域',
           widget: 'select',
           name: 'region',
+          disabled: true,
           defaultValue: 'shanghai',
           options() {
             return new Promise(resolve => {
@@ -112,6 +117,7 @@ export default {
           widget: 'datePickerGroup',
           name: 'date',
           type: 'date',
+          disabled: true,
           required: true,
           defaultValue: {
             start: Date.now(),
@@ -139,11 +145,13 @@ export default {
         {
           label: '即时配送',
           widget: 'switch',
+          disabled: true,
           defaultValue: true,
           name: 'delivery',
         },
         {
           label: '活动性质',
+          disabled: true,
           widget: 'checkbox',
           name: 'type',
           defaultValue: ['地推活动'],
@@ -164,6 +172,7 @@ export default {
         {
           label: '特殊资源',
           widget: 'radio',
+          disabled: true,
           defaultValue: '线上品牌商赞助',
           name: 'resource',
           emum: 'system.sex',
@@ -177,6 +186,7 @@ export default {
         {
           label: '活动形式',
           widget: 'textarea',
+          disabled: true,
           name: 'desc',
           defaultValue: '活动形式',
           validate: [{ required: true, message: '请填写活动形式', trigger: 'blur' }],
@@ -244,7 +254,6 @@ export default {
             {
               text: '删除',
               action: child => {
-                console.dir(child.name);
                 this.childrenSelf = this.childrenSelf.filter(item => {
                   return item.name !== child.name;
                 });

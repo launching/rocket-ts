@@ -1,5 +1,5 @@
 <template lang="pug">
-  el-switch(v-model="store.value" type="string")
+  el-switch(v-model="store.value" :disabled="targetDisabled" type="string")
 </template>
 <script lang="ts">
 import { Component, Mixins } from 'vue-property-decorator';

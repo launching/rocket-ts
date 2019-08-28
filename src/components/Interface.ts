@@ -5,6 +5,10 @@ export interface FormModel {
 export interface Validate {
   [name: string]: any;
 }
+
+export interface Visibility {
+  [name: string]: boolean;
+}
 export interface FormItem {
   name: string;
   widget: string;

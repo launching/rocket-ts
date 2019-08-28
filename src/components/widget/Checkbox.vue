@@ -1,5 +1,5 @@
 <template lang="pug">
-r-checkbox(v-model="store.value" :options="options" :name="name" ref="checkbox")
+r-checkbox(v-model="store.value" :disabled="targetDisabled" :options="options" :name="name" ref="checkbox")
 </template>
 <script lang="ts">
 import { Component, Mixins } from 'vue-property-decorator';

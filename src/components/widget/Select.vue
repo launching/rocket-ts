@@ -1,5 +1,5 @@
 <template lang="pug">
-r-select(v-model="store.value" :options="options" :clearable="clearable" ref="select")
+r-select(v-model="store.value" :options="options" :disabled="targetDisabled" :clearable="clearable" ref="select")
 </template>
 <script lang="ts">
 import { Component, Mixins, Prop } from 'vue-property-decorator';

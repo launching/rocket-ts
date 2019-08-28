@@ -1,5 +1,5 @@
 <template lang="pug">
-r-radio(v-model="store.value" :options="options" ref="radio")
+r-radio(v-model="store.value" :disabled="targetDisabled" :options="options" ref="radio")
 </template>
 <script lang="ts">
 import { Component, Mixins } from 'vue-property-decorator';

@@ -1,5 +1,5 @@
 <template lang="pug">
-el-date-picker(:type="type" v-model="store.value" )
+el-date-picker(:type="type" :disabled="targetDisabled" v-model="store.value"  )
 </template>
 <script lang="ts">
 import { Component, Mixins, Prop, Watch } from 'vue-property-decorator';

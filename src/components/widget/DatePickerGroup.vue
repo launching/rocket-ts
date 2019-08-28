@@ -2,11 +2,11 @@
 .r-date-picker-group
   el-col(:span="11")
     el-form-item(:prop="getStartName")
-      el-date-picker(:type="type" v-model="store.value.start" style="width: 100%;")
+      el-date-picker(:type="type" :disabled="targetDisabled" v-model="store.value.start" style="width: 100%;")
   el-col.line(:span="2") -
   el-col(:span="11")
     el-form-item(:prop="getEndName")
-      el-date-picker(:type="type" v-model="store.value.end" style="width: 100%;")
+      el-date-picker(:type="type" :disabled="targetDisabled" v-model="store.value.end" style="width: 100%;")
 </template>
 <script lang="ts">
 import { Component, Mixins, Prop, Watch } from 'vue-property-decorator';

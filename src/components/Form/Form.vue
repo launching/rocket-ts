@@ -1,7 +1,7 @@
 <template lang="pug">
 .r-form(:style="style")
   el-form(ref="form" v-bind="formProps")
-    el-form-item(v-for="(child, $index) in children" :key="$index" :label="child.label" :prop="propName(child)" :required="child.required" :size="child.size")
+    el-form-item(v-for="(child, $index) in targetChildren" :key="$index" :label="child.label" :prop="propName(child)" :required="child.required" :size="child.size")
       component(:is="itemType(child)"  v-bind="child" ref="widgets" @ready="widgetReady")
     el-form-item(:size="handlerSize")
       r-toolbar(:children="toolbar" @handler-click="toolbarHandler" :ctx="model")
@@ -10,7 +10,7 @@
 import { Component, Prop, Mixins, Vue, PropSync, Provide, ProvideReactive, Watch } from 'vue-property-decorator';
 import _ from 'lodash';
 import { Form as ElForm } from 'element-ui';
-import { FormModel, FormItem, ButtonItem, Validate } from '@/components/Interface';
+import { FormModel, FormItem, ButtonItem, Validate, Visibility } from '@/components/Interface';
 import widget from '@/components/widget';
 import RToolbar from '@/components/toolBar/index.vue';
 
@@ -70,7 +70,7 @@ export default class RForm extends Mixins(Vue) {
   readonly handlerSize?: string;
 
   rules: Validate = {};
-
+  visibles: Visibility = {};
   widgetList: Array<string> = [];
 
   get validateOnRuleChange(): boolean {
@@ -87,6 +87,15 @@ export default class RForm extends Mixins(Vue) {
     };
   }
 
+  get targetChildren(): Array<FormItem> {
+    return this.children.filter(item => {
+      if (!_.isUndefined(this.visibles[item.name])) {
+        return this.visibles[item.name];
+      }
+      return true;
+    });
+  }
+
   @Provide()
   model: FormModel = {};
 
@@ -98,6 +107,11 @@ export default class RForm extends Mixins(Vue) {
   @Provide()
   initModelItemValidate(name: string, value: any) {
     this.$set(this.rules, name, value);
+  }
+
+  @Provide()
+  initItemVisible(name: string, value: any) {
+    this.$set(this.visibles, name, value);
   }
 
   propName = (child: FormItem) => {
@@ -115,7 +129,7 @@ export default class RForm extends Mixins(Vue) {
   itemType = (child: { widget: string }) => {
     const widget = child.widget || 'input';
     const widgetName = widget.replace(/([A-Z])/g, e => `-${e.toLowerCase()}`);
-    return `r-${widgetName}`;
+    return `w-${widgetName}`;
   };
 
   validate() {

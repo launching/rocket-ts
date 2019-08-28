@@ -1,5 +1,5 @@
 <template lang="pug">
-  el-input(v-model="store.value" type="textarea")
+  el-input(v-model="store.value" :disabled="targetDisabled" type="textarea")
 </template>
 <script lang="ts">
 import { Component, Mixins } from 'vue-property-decorator';

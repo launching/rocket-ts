@@ -1,6 +1,6 @@
 import { Component, Prop, Vue, Inject, Watch } from 'vue-property-decorator';
 import _ from 'lodash';
-import { FormModel,  Validate, WidgetStore, ButtonItem } from '@/components/Interface';
+import { FormModel, Validate, WidgetStore, ButtonItem } from '@/components/Interface';
 @Component({})
 export default class Widget extends Vue {
   @Prop()
@@ -9,8 +9,19 @@ export default class Widget extends Vue {
   @Prop()
   readonly defaultValue?: any;
 
-  @Prop()
-  readonly toolbar?: Array<ButtonItem> | undefined;
+  @Prop({
+    default() {
+      return true;
+    },
+  })
+  readonly visible?: any;
+
+  @Prop({
+    default() {
+      return false;
+    },
+  })
+  readonly disabled?: any;
 
   @Inject()
   readonly model!: FormModel;
@@ -20,6 +31,9 @@ export default class Widget extends Vue {
 
   @Inject()
   initModelItemValidate: any;
+
+  @Inject()
+  initItemVisible: any;
 
   @Prop(String)
   name!: string;
@@ -42,20 +56,34 @@ export default class Widget extends Vue {
     this.changeModelItem(this.name, val);
   }
 
+  async visibleHandler() {
+    return _.isFunction(this.visible) ? this.visible() : this.visible;
+  }
+
+  @Watch('visible', { immediate: true, deep: true })
+  async refreshVisible() {
+    let res = await this.visibleHandler();
+    this.initItemVisible(this.name, res);
+  }
+
+  async disabledHandler() {
+    return _.isFunction(this.disabled) ? this.disabled() : this.disabled;
+  }
+
+  @Watch('disabled', { immediate: true, deep: true })
+  async refreshDisabled() {
+    const res = await this.disabledHandler();
+    this.targetDisabled = !!res;
+  }
+
   store: WidgetStore = {
     value: '',
   };
 
-  // resetFields() {
-  //   this.$set(this.store, 'value', this.defaultValue);
-  // }
+  targetDisabled: boolean = false;
 
   created() {
     this.initModelItemValidate(this.name, this.validate);
     this.$emit('ready', this.name);
-  }
-
-  mounted() {
-    return { name: this.name };
   }
 }

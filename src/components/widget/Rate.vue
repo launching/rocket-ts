@@ -1,6 +1,6 @@
 <template lang="pug">
 .r-w-rate
-  el-rate(v-model="store.value" :colors="colors" :max="max")
+  el-rate(v-model="store.value" :disabled="targetDisabled" :colors="colors" :max="max")
 </template>
 <script lang="ts">
 import { Component, Mixins, Prop } from 'vue-property-decorator';

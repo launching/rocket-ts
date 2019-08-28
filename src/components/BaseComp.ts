@@ -8,6 +8,8 @@ export default class Comp extends Vue {
   value?: any;
 
   targetOptions = [];
+  @Prop(Boolean)
+  disabled?: boolean;
 
   @Prop()
   options!: [{ value: string; label: string }];
